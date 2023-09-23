@@ -1,6 +1,7 @@
-import './globals.css'
 import { ReactNode } from 'react'
 import { Inter_Tight as Inter } from 'next/font/google'
+
+import Logo from './components/home-components/home-layout-components/Logo'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${inter.variable}`}>
         <div>
           <div>
-            <h1>Layout</h1>{' '}
+            <Logo />
           </div>
           {children}
         </div>
