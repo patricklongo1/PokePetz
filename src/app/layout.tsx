@@ -1,7 +1,10 @@
 import { ReactNode } from 'react'
+import StyledComponentsRegistry from './lib/registry'
+import GlobalStyles from './styles/GlobalStyles'
 import { Inter_Tight as Inter } from 'next/font/google'
-
-import Logo from './components/home-components/home-layout-components/Logo'
+import Header from './components/home-components/home-layout-components/Header'
+import AnimatedDiv from './components/home-components/home-layout-components/AnimatedLogo.tsx'
+import MainNav from './components/home-components/home-layout-components/MainNav'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,14 +21,20 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}`}>
-        <div>
+      <StyledComponentsRegistry>
+        <GlobalStyles />
+        <body className={`${inter.variable}`}>
           <div>
-            <Logo />
+            <div>
+              <Header>
+                <AnimatedDiv />
+                <MainNav />
+              </Header>
+            </div>
+            {children}
           </div>
-          {children}
-        </div>
-      </body>
+        </body>
+      </StyledComponentsRegistry>
     </html>
   )
 }

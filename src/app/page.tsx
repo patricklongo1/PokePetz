@@ -1,13 +1,16 @@
-export default async function Home() {
-  /* const response = await api.get('/memories', {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }) */
+'use client'
+import * as S from './style'
+import bgImage from '../../public/images/pokemon-hero.jpg'
 
+export default function Home() {
   return (
-    <div>
-      <h1>Opa</h1>
-    </div>
+    <S.BackgroundImage>
+      <S.ImageOverlay>
+        <S.StyledImage src={bgImage} alt="Descrição da imagem" layout="fill" />
+      </S.ImageOverlay>
+      <S.MainText>
+        Cuidamos bem do seu pokémon, para ele cuidar bem de você
+      </S.MainText>
+    </S.BackgroundImage>
   )
 }
