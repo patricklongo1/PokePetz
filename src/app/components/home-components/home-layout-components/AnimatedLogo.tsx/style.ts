@@ -16,6 +16,10 @@ export const Container = styled(Link)<{ isExpanded: boolean }>`
 
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 2.3125rem;
+  }
 `
 
 export const NameContainer = styled.div`

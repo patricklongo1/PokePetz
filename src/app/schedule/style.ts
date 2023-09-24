@@ -12,12 +12,22 @@ export const Title = styled.h1`
   font-weight: 600;
   font-size: 1.6rem;
   color: #444;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    text-align: center;
+  }
 `
 
 export const Form = styled.form`
   width: 34.375rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 23.5rem;
+    flex-direction: column;
+  }
 `
 
 export const DoubleInputContainer = styled.div`
@@ -25,6 +35,10 @@ export const DoubleInputContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5625rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 export const InputContainer = styled.main`

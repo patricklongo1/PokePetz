@@ -8,6 +8,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 16.5rem;
+  }
 `
 
 export const SilpleButton = styled(Link)`
