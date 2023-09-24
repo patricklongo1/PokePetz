@@ -2,13 +2,15 @@
 import { useEffect, ChangeEvent, useState } from 'react'
 import InfoBar from '../components/pages-components/InfoBar'
 import Resume from '../components/form-components/Resume'
+import ScheduleStatus from '../components/pages-components/ScheduleStatus'
+
 import * as S from './style'
 
 import { useForm, useFieldArray } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import api from '../services/api'
 import pokeApi from '../services/pokeApi'
 
@@ -117,6 +119,7 @@ export default function Schedule() {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm<createScheduleFormData>({
     resolver: zodResolver(createScheduleSchema),
   })
@@ -130,6 +133,8 @@ export default function Schedule() {
   const [pokemonsOptions, setPokemonsOptions] = useState<PokemonOption[]>([])
   const [regionsOptions, setRegionsOptions] = useState<RegionOption[]>([])
   const [citiesOptions, setCitiesOptions] = useState<CityOption[]>([])
+  const [scheduleResponseStatus, setScheduleResponseStatus] = useState(0)
+  const [scheduleResponseMessage, setScheduleResponseMessage] = useState('')
 
   async function fetchDataFromUrls(locations: CityOption[]) {
     const results = []
@@ -189,9 +194,19 @@ export default function Schedule() {
   }, [selectedDate])
 
   async function handleSchedule(data: createScheduleFormData) {
-    const response = await api.post('/scheduling/create', { data })
+    try {
+      const response = await api.post('/scheduling/create', { data })
 
-    console.log(response.data)
+      setScheduleResponseStatus(response.status)
+      setScheduleResponseMessage(response.data)
+    } catch (error: unknown) {
+      if (error instanceof AxiosError && error.response) {
+        setScheduleResponseStatus(error.response.status)
+        setScheduleResponseMessage(error.response.data)
+      } else {
+        console.log(error)
+      }
+    }
   }
 
   function addNewPokemon() {
@@ -202,8 +217,21 @@ export default function Schedule() {
     event.target.blur()
   }
 
+  const handleCloseScheduleResponseModal = () => {
+    setScheduleResponseMessage('')
+    setScheduleResponseStatus(0)
+    reset()
+  }
+
   return (
     <>
+      {scheduleResponseStatus !== 0 && scheduleResponseMessage !== '' && (
+        <ScheduleStatus
+          status={scheduleResponseStatus}
+          message={scheduleResponseMessage}
+          handleClose={handleCloseScheduleResponseModal}
+        />
+      )}
       <InfoBar
         crumbs={crumbs}
         title="Agendar Consulta"
