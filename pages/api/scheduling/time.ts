@@ -10,6 +10,7 @@ export default function handler(
   }
   if (
     req.headers['content-type']?.toLowerCase() !== 'application/json' &&
+    // eslint-disable-next-line no-prototype-builtins
     !req.body.hasOwnProperty('date')
   ) {
     res.status(400).end()

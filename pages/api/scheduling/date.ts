@@ -4,6 +4,7 @@ type DateResponse = Array<string>
 
 function getDates(d1: number, d2: number): Array<Date> {
   const oneDay = 24 * 3600 * 1000
+  // eslint-disable-next-line no-var
   for (var d = [], ms = d1 * 1, last = d2 * 1; ms < last; ms += oneDay) {
     d.push(new Date(ms))
   }

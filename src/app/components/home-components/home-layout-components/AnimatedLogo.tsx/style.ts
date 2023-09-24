@@ -11,8 +11,8 @@ export const Container = styled(Link)<{ isExpanded: boolean }>`
   height: 61px;
   border-radius: 50px;
   background-color: #e40f0f;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   display: flex;
   align-items: center;

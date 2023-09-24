@@ -13,7 +13,7 @@ const InfoBar: React.FC<InfoBarProps> = ({ crumbs, title, description }) => {
     <S.Container>
       <S.BreadcrumbsContainer>
         {crumbs.map((crumb, index) => (
-          <React.Fragment key={crumb.path}>
+          <React.Fragment key={crumb.label}>
             {index > 0 && <S.Separator> {'>'} </S.Separator>}
             {crumb.path ? (
               <S.CrumbLink href={crumb.path}>{crumb.label}</S.CrumbLink>
