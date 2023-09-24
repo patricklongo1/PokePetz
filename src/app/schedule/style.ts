@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import arrowDown from '../../../public/images/arrowDown.jpg'
 
 export const Content = styled.main`
-  margin: 0px auto;
-  max-width: 652px;
+  margin: 0rem auto;
+  max-width: 43.4667rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,12 +10,12 @@ export const Content = styled.main`
 
 export const Title = styled.h1`
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.6rem;
   color: #444;
 `
 
 export const Form = styled.form`
-  width: 550px;
+  width: 34.375rem;
   display: flex;
   flex-direction: column;
 `
@@ -25,7 +24,7 @@ export const DoubleInputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
 `
 
 export const InputContainer = styled.main`
@@ -35,7 +34,7 @@ export const InputContainer = styled.main`
 `
 
 export const PokemonListContainer = styled.div`
-  margin-top: 16px;
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -43,7 +42,7 @@ export const PokemonListContainer = styled.div`
 `
 
 export const PokemonListContent = styled.div`
-  margin-left: 16px;
+  margin-left: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -54,10 +53,10 @@ export const PokemonListContent = styled.div`
 export const PokemonSelect = styled.select`
   width: 100%;
   align-self: flex-end;
-  border: 1px solid #d5d5d5;
-  border-radius: 8px;
-  padding: 10px;
-  height: 45px;
+  border: 0.0625rem solid #d5d5d5;
+  border-radius: 0.5rem;
+  padding: 0.6667rem;
+  height: 2.8125rem;
 
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -80,14 +79,14 @@ export const PokemonSelect = styled.select`
 `
 
 export const PokemonAddButton = styled.button`
-  border: 1px solid #1d1d1d;
-  width: 280px;
-  height: 42px;
+  border: 0.0625rem solid #1d1d1d;
+  width: 17.5rem;
+  height: 2.625rem;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #444;
-  border-radius: 30px;
-  margin: 16px 0px;
+  border-radius: 1.875rem;
+  margin: 1rem 0rem;
 
   transition: background-color 0.3s ease;
   &:hover {
@@ -97,25 +96,25 @@ export const PokemonAddButton = styled.button`
 
 export const InputLabel = styled.label`
   font-weight: 700;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #444;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 `
 
 export const SimpleInput = styled.input`
   width: 85%;
-  border: 1px solid #d5d5d5;
-  border-radius: 8px;
-  padding: 10px;
-  height: 25px;
+  border: 0.0625rem solid #d5d5d5;
+  border-radius: 0.5rem;
+  padding: 0.6667rem;
+  height: 1.5625rem;
 `
 
 export const SimpleSelect = styled.select`
   width: 94%;
-  border: 1px solid #d5d5d5;
-  border-radius: 8px;
-  padding: 10px;
-  height: 45px;
+  border: 0.0625rem solid #d5d5d5;
+  border-radius: 0.5rem;
+  padding: 0.6667rem;
+  height: 2.8125rem;
 
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -138,34 +137,34 @@ export const SimpleSelect = styled.select`
 `
 
 export const Option = styled.option`
-  padding: 10px;
-  height: 45px;
+  padding: 0.6667rem;
+  height: 2.8125rem;
 `
 
 export const SimpleSpan = styled.span`
-  min-width: 70px;
+  min-width: 4.375rem;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #444;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 `
 
 export const SimpleSmall = styled.small`
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #747474;
 `
 
 export const SubmitButton = styled.button`
-  width: 183px;
-  height: 42px;
+  width: 11.4375rem;
+  height: 2.625rem;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #fff;
   background-color: #e40f0f;
-  border-radius: 30px;
+  border-radius: 1.875rem;
   align-self: flex-end;
-  margin: 16px 0px;
+  margin: 1rem 0rem;
 
   transition: background-color 0.3s ease;
   &:hover {
@@ -174,14 +173,14 @@ export const SubmitButton = styled.button`
 `
 
 export const ErrorMessage = styled.span`
-  margin-top: 2px;
+  margin-top: 0.125rem;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #e40f0f;
 `
 
 export const Divider = styled.div`
-  width: 550px;
-  height: 1px;
+  width: 34.375rem;
+  height: 0.0625rem;
   background-color: #d5d5d5;
 `

@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const BackgroundImage = styled.div`
   position: relative;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 5rem);
   overflow: hidden;
 
   display: flex;
@@ -26,12 +26,12 @@ export const StyledImage = styled(Image)`
 `
 
 export const MainText = styled.p`
-  width: 500px;
-  font-size: 32px;
+  width: 31.25rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
   color: #fff;
 
   align-self: center;
-  margin: 0px auto;
+  margin: 0rem auto;
 `

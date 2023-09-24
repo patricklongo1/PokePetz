@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 export const Container = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
 
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const SilpleButton = styled(Link)`
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   font-family: var(--font-inter);
   color: #444;
@@ -20,12 +20,12 @@ export const SilpleButton = styled(Link)`
 
 export const FilledButton = styled(Link)`
   text-decoration: none;
-  width: 172px;
-  height: 42px;
+  width: 10.75rem;
+  height: 2.625rem;
   background-color: #e40f0f;
-  border-radius: 30px;
+  border-radius: 1.875rem;
 
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
   font-family: var(--font-inter);
   color: #fff;

@@ -3,8 +3,8 @@ import Link from 'next/link'
 
 export const Container = styled.div`
   width: full;
-  max-height: 187px;
-  padding: 60px;
+  max-height: 11.6875rem;
+  padding: 3.75rem;
   background-color: #e40f0f;
 
   display: flex;
@@ -13,19 +13,19 @@ export const Container = styled.div`
 export const BreadcrumbsContainer = styled.nav`
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #fff;
 `
 
 export const Separator = styled.span`
-  margin: 0 8px;
+  margin: 0 0.5rem;
 `
 
 export const CrumbLink = styled(Link)`
   text-decoration: none;
   color: #fff;
   transition: color 0.2s;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 
   &:hover {
@@ -36,17 +36,17 @@ export const CrumbLink = styled(Link)`
 export const LastCrumb = styled.span`
   text-decoration: none;
   color: #eee;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 `
 export const Title = styled.h1`
   font-weight: 700;
-  font-size: 32px;
+  font-size: 2rem;
   color: #fff;
 `
 
 export const Description = styled.p`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #eee;
 `
