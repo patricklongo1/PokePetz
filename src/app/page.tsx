@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <S.BackgroundImage>
       <S.ImageOverlay>
-        <S.StyledImage src={bgImage} alt="Descrição da imagem" layout="fill" />
+        <S.StyledImage src={bgImage} alt="Logo" layout="fill" />
       </S.ImageOverlay>
       <S.MainText>
         Cuidamos bem do seu pokémon, para ele cuidar bem de você

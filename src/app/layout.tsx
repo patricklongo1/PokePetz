@@ -3,7 +3,7 @@ import StyledComponentsRegistry from './lib/registry'
 import GlobalStyles from './styles/GlobalStyles'
 import { Inter_Tight as Inter } from 'next/font/google'
 import Header from './components/home-components/home-layout-components/Header'
-import AnimatedDiv from './components/home-components/home-layout-components/AnimatedLogo.tsx'
+import AnimatedDiv from './components/home-components/home-layout-components/AnimatedLogo'
 import MainNav from './components/home-components/home-layout-components/MainNav'
 
 const inter = Inter({

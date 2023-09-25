@@ -11,14 +11,18 @@ interface InfoBarProps {
 const InfoBar: React.FC<InfoBarProps> = ({ crumbs, title, description }) => {
   return (
     <S.Container>
-      <S.BreadcrumbsContainer>
+      <S.BreadcrumbsContainer data-testid="breadcrumbs-container">
         {crumbs.map((crumb, index) => (
           <React.Fragment key={crumb.label}>
-            {index > 0 && <S.Separator> {'>'} </S.Separator>}
+            {index > 0 && (
+              <S.Separator data-testid="separator"> {'>'} </S.Separator>
+            )}
             {crumb.path ? (
-              <S.CrumbLink href={crumb.path}>{crumb.label}</S.CrumbLink>
+              <S.CrumbLink data-testid="breadcrumb" href={crumb.path}>
+                {crumb.label}
+              </S.CrumbLink>
             ) : (
-              <S.LastCrumb>{crumb.label}</S.LastCrumb>
+              <S.LastCrumb data-testid="breadcrumb">{crumb.label}</S.LastCrumb>
             )}
           </React.Fragment>
         ))}

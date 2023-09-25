@@ -24,6 +24,7 @@ const AnimatedDiv: React.FC = () => {
 
   return (
     <S.Container
+      data-testid="animated-div-container"
       href="/"
       isExpanded={isExpanded}
       onMouseEnter={toggleExpansionTrue}

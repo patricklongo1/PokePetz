@@ -1,5 +1,7 @@
 {
   "extends": [
-    "@rocketseat/eslint-config/next"
+    "@rocketseat/eslint-config/next",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
   ]
 }
