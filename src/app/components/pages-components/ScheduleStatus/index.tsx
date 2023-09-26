@@ -2,7 +2,7 @@ import * as S from './style'
 import check from '../../../../../public/check.svg'
 import warning from '../../../../../public/warning.svg'
 
-interface ScheduleStatusProps {
+export interface ScheduleStatusProps {
   status: number
   message: string
   handleClose: () => void

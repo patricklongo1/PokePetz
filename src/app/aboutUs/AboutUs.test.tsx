@@ -8,12 +8,12 @@ describe('AboutUs', () => {
     render(<AboutUs />)
   })
 
-  test('renders the correct title', () => {
+  test('should renders the correct title', () => {
     const titleElement = screen.getByText('O Centro Pokémon')
     expect(titleElement).toBeInTheDocument()
   })
 
-  test('renders multiple subtitles', () => {
+  test('should renders multiple subtitles', () => {
     const subtitles = screen.getAllByRole('heading', { level: 2 })
     expect(subtitles).toHaveLength(4)
   })

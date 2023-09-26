@@ -2,7 +2,9 @@
 import { useEffect, ChangeEvent, useState } from 'react'
 import InfoBar from '../components/pages-components/InfoBar'
 import Resume from '../components/form-components/Resume'
-import ScheduleStatus from '../components/pages-components/ScheduleStatus'
+import dynamic from 'next/dynamic'
+import { ScheduleStatusProps } from '../components/pages-components/ScheduleStatus'
+import SmallSkeleton from '../components/pages-components/SmallSkeleton'
 
 import * as S from './style'
 
@@ -13,6 +15,15 @@ import { z } from 'zod'
 import axios, { AxiosError } from 'axios'
 import api from '../services/api'
 import pokeApi from '../services/pokeApi'
+
+const ScheduleStatus = dynamic<ScheduleStatusProps>(
+  () => {
+    return import('../components/pages-components/ScheduleStatus')
+  },
+  {
+    loading: () => <span>Carregando...</span>,
+  },
+)
 
 const createScheduleSchema = z.object({
   name: z
@@ -118,7 +129,7 @@ const Schedule: React.FC = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isValid },
     reset,
   } = useForm<createScheduleFormData>({
     resolver: zodResolver(createScheduleSchema),
@@ -271,7 +282,7 @@ const Schedule: React.FC = () => {
           <S.DoubleInputContainer>
             <S.InputContainer>
               <S.InputLabel htmlFor="region">Região</S.InputLabel>
-              {regionsOptions.length >= 1 && (
+              {regionsOptions.length >= 1 ? (
                 <S.SimpleSelect
                   defaultValue={''}
                   id="region"
@@ -290,6 +301,8 @@ const Schedule: React.FC = () => {
                       </S.Option>
                     ))}
                 </S.SimpleSelect>
+              ) : (
+                <SmallSkeleton />
               )}
               {errors.region && (
                 <S.ErrorMessage>{errors.region.message}</S.ErrorMessage>
@@ -298,7 +311,7 @@ const Schedule: React.FC = () => {
 
             <S.InputContainer>
               <S.InputLabel htmlFor="city">Cidade</S.InputLabel>
-              {citiesOptions.length >= 1 && (
+              {citiesOptions.length >= 1 ? (
                 <S.SimpleSelect
                   defaultValue={''}
                   id="city"
@@ -317,6 +330,8 @@ const Schedule: React.FC = () => {
                       </S.Option>
                     ))}
                 </S.SimpleSelect>
+              ) : (
+                <SmallSkeleton />
               )}
 
               {errors.city && (
@@ -362,14 +377,18 @@ const Schedule: React.FC = () => {
             </S.DoubleInputContainer>
           ))}
 
-          <S.PokemonAddButton type="button" onClick={addNewPokemon}>
+          <S.PokemonAddButton
+            type="button"
+            onClick={addNewPokemon}
+            disabled={pokemonsOptions.length <= 0}
+          >
             Adicionar novo pokémon ao time... +
           </S.PokemonAddButton>
 
           <S.DoubleInputContainer>
             <S.InputContainer>
               <S.InputLabel htmlFor="date">Data para Atendimento</S.InputLabel>
-              {datesOptions.length >= 1 && (
+              {datesOptions.length >= 1 ? (
                 <S.SimpleSelect
                   defaultValue={''}
                   id="date"
@@ -390,6 +409,8 @@ const Schedule: React.FC = () => {
                     </S.Option>
                   ))}
                 </S.SimpleSelect>
+              ) : (
+                <SmallSkeleton />
               )}
               {errors.date && (
                 <S.ErrorMessage>{errors.date.message}</S.ErrorMessage>
@@ -398,7 +419,7 @@ const Schedule: React.FC = () => {
 
             <S.InputContainer>
               <S.InputLabel htmlFor="time">Horário de Atendimento</S.InputLabel>
-              {timesOptions.length >= 1 && (
+              {timesOptions.length >= 1 ? (
                 <S.SimpleSelect
                   defaultValue={''}
                   id="time"
@@ -416,6 +437,8 @@ const Schedule: React.FC = () => {
                     </S.Option>
                   ))}
                 </S.SimpleSelect>
+              ) : (
+                <SmallSkeleton />
               )}
 
               {errors.time && (
@@ -428,7 +451,9 @@ const Schedule: React.FC = () => {
 
           <Resume teamTotal={fields.length} tax={2.1} />
 
-          <S.SubmitButton type="submit">Concluir Agendamento</S.SubmitButton>
+          <S.SubmitButton type="submit" disabled={!isValid}>
+            Concluir Agendamento
+          </S.SubmitButton>
         </S.Form>
       </S.Content>
     </>

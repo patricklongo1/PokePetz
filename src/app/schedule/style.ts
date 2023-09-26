@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Content = styled.main`
   margin: 0rem auto;
@@ -106,6 +106,13 @@ export const PokemonAddButton = styled.button`
   &:hover {
     background-color: #eee;
   }
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      opacity: 0.5;
+      cursor: not-allowed;
+    `}
 `
 
 export const InputLabel = styled.label`
@@ -184,6 +191,18 @@ export const SubmitButton = styled.button`
   &:hover {
     background-color: #c20808;
   }
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: #ddd;
+      color: #000;
+      &:hover {
+        background-color: #ddd;
+      }
+    `}
 `
 
 export const ErrorMessage = styled.span`
