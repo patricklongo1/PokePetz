@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Resume from '../src/app/components/form-components/Resume'
+import Resume from './index'
 
 describe('Resume', () => {
   it('should renders the number of Pokémon to be attended', () => {

@@ -14,8 +14,7 @@ const inter = Inter({
 
 export const metadata = {
   title: 'Petz - Centro Pokémon',
-  description:
-    'Uma cápsula do tempo construída com React, Next.js, TailwindCSS e Typescript.',
+  description: 'Teste Frontend React / Next - Petz',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import InfoBar from '../src/app/components/pages-components/InfoBar'
+import InfoBar from './index'
 
 const sampleCrumbs = [
   { label: 'Home', path: '/' },

@@ -1,7 +1,7 @@
 'use client'
 import * as S from './style'
 
-export default function MainNav() {
+const MainNav: React.FC = () => {
   return (
     <S.Container>
       <S.SilpleButton href="/aboutUs">Quem Somos</S.SilpleButton>
@@ -9,3 +9,5 @@ export default function MainNav() {
     </S.Container>
   )
 }
+
+export default MainNav

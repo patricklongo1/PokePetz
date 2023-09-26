@@ -14,7 +14,7 @@ export const Container = styled.main`
   background-color: rgba(0, 0, 0, 0.5); /* Sobreposição semi-transparente */
 `
 export const Content = styled.div`
-  width: 400.5rem;
+  width: 25.5rem;
   height: 19rem;
   border-radius: 0.5rem;
   border: 0.0625rem solid #df8686;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Header from '../src/app/components/home-components/home-layout-components/Header'
+import Header from './index'
 
 describe('Header', () => {
   it('should render without errors', () => {

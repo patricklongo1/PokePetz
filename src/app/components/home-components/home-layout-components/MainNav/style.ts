@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 
-export const Container = styled.div`
+export const Container = styled.nav`
   width: 18.75rem;
   height: 4rem;
 

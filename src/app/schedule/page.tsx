@@ -112,7 +112,7 @@ interface CityOption {
   url: string
 }
 
-export default function Schedule() {
+const Schedule: React.FC = () => {
   const crumbs = [{ label: 'Home', path: '/' }, { label: 'Agendar Consulta' }]
   const {
     register,
@@ -346,11 +346,9 @@ export default function Schedule() {
                     </S.Option>
                     {pokemonsOptions.length &&
                       pokemonsOptions.map((option) => (
-                        <>
-                          <S.Option key={option.name} value={option.name}>
-                            {option.name}
-                          </S.Option>
-                        </>
+                        <S.Option key={option.name} value={option.name}>
+                          {option.name}
+                        </S.Option>
                       ))}
                   </S.PokemonSelect>
 
@@ -436,3 +434,5 @@ export default function Schedule() {
     </>
   )
 }
+
+export default Schedule

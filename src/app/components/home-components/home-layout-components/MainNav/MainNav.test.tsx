@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import MainNav from '../src/app/components/home-components/home-layout-components/MainNav'
+import MainNav from './index'
 
 describe('MainNav', () => {
   it('should render without errors', () => {

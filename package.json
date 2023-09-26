@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "test": "jest --transformIgnorePatterns \"node_modules/(?!axios)/\"",
-    "test:watch": "jest watchAll"
+    "test": "jest --transformIgnorePatterns \"node_modules/(?!axios)/\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",

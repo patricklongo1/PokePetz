@@ -2,7 +2,7 @@
 import InfoBar from '../components/pages-components/InfoBar'
 import * as S from './style'
 
-export default function AboutUs() {
+const AboutUs: React.FC = () => {
   const crumbs = [{ label: 'Home', path: '/' }, { label: 'Quem Somos' }]
 
   return (
@@ -85,3 +85,5 @@ export default function AboutUs() {
     </>
   )
 }
+
+export default AboutUs

@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import logotipo from '../../../../../../public/images/white-pokeball.svg'
 
-const AnimatedDiv: React.FC = () => {
+const AnimatedLogo: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(true)
 
   const toggleExpansionTrue = () => {
@@ -38,4 +38,4 @@ const AnimatedDiv: React.FC = () => {
   )
 }
 
-export default AnimatedDiv
+export default AnimatedLogo

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import AnimatedLogo from '../src/app/components/home-components/home-layout-components/AnimatedLogo'
+import AnimatedLogo from './index'
 
 describe('AnimatedLogo', () => {
   it('should render correctly with the logo', () => {

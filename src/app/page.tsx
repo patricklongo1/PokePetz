@@ -2,7 +2,7 @@
 import * as S from './style'
 import bgImage from '../../public/images/pokemon-hero.jpg'
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <S.BackgroundImage>
       <S.ImageOverlay>
@@ -14,3 +14,5 @@ export default function Home() {
     </S.BackgroundImage>
   )
 }
+
+export default Home

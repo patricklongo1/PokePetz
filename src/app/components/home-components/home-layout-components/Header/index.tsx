@@ -2,6 +2,12 @@
 import * as S from './style'
 import { ReactNode } from 'react'
 
-export default function Header({ children }: { children: ReactNode }) {
+interface HeaderProps {
+  children: ReactNode
+}
+
+const Header: React.FC<HeaderProps> = ({ children }) => {
   return <S.Container data-testid="header-container">{children}</S.Container>
 }
+
+export default Header

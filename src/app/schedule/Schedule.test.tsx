@@ -1,25 +1,17 @@
-/* eslint-disable testing-library/prefer-screen-queries */
-/* eslint-disable testing-library/no-wait-for-multiple-assertions */
 /* eslint-disable testing-library/no-render-in-lifecycle */
 import React from 'react'
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  findByTestId,
-} from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Schedule from '../src/app/schedule/page'
+import Schedule from './page'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
-import dates from './mocks/dates.json'
-import times from './mocks/times.json'
-import pokemons from './mocks/pokemons.json'
-import regions from './mocks/regions.json'
-import cities from './mocks/cities.json'
-import city from './mocks/city.json'
+import dates from '../../../mocks/dates.json'
+import times from '../../../mocks/times.json'
+import pokemons from '../../../mocks/pokemons.json'
+import regions from '../../../mocks/regions.json'
+import cities from '../../../mocks/cities.json'
+import city from '../../../mocks/city.json'
 
 describe('Schedule', () => {
   const worker = setupServer(
@@ -103,7 +95,6 @@ describe('Schedule', () => {
       'date',
     )) as HTMLSelectElement
     const today = new Date().toLocaleDateString()
-    console.log({ today })
     await userEvent.selectOptions(selectDateElement, today)
 
     const selectTimeElement = (await screen.findByTestId(
