@@ -271,21 +271,26 @@ export default function Schedule() {
           <S.DoubleInputContainer>
             <S.InputContainer>
               <S.InputLabel htmlFor="region">Região</S.InputLabel>
-              <S.SimpleSelect
-                defaultValue={''}
-                id="region"
-                placeholder="Selecione sua região"
-                {...register('region')}
-                onChange={handleSelectChange}
-              >
-                <S.Option value="" disabled hidden>
-                  Selecione sua região
-                </S.Option>
-                {regionsOptions.length &&
-                  regionsOptions.map((option) => (
-                    <S.Option value={option.name}>{option.name}</S.Option>
-                  ))}
-              </S.SimpleSelect>
+              {regionsOptions.length >= 1 && (
+                <S.SimpleSelect
+                  defaultValue={''}
+                  id="region"
+                  data-testid="region"
+                  placeholder="Selecione sua região"
+                  {...register('region')}
+                  onChange={handleSelectChange}
+                >
+                  <S.Option value="" disabled hidden>
+                    Selecione sua região
+                  </S.Option>
+                  {regionsOptions.length &&
+                    regionsOptions.map((option) => (
+                      <S.Option key={option.name} value={option.name}>
+                        {option.name}
+                      </S.Option>
+                    ))}
+                </S.SimpleSelect>
+              )}
               {errors.region && (
                 <S.ErrorMessage>{errors.region.message}</S.ErrorMessage>
               )}
@@ -293,21 +298,26 @@ export default function Schedule() {
 
             <S.InputContainer>
               <S.InputLabel htmlFor="city">Cidade</S.InputLabel>
-              <S.SimpleSelect
-                defaultValue={''}
-                id="city"
-                placeholder="Selecione sua cidade"
-                {...register('city')}
-                onChange={handleSelectChange}
-              >
-                <S.Option value="" disabled hidden>
-                  Selecione sua cidade
-                </S.Option>
-                {citiesOptions.length &&
-                  citiesOptions.map((option) => (
-                    <S.Option value={option.name}>{option.name}</S.Option>
-                  ))}
-              </S.SimpleSelect>
+              {citiesOptions.length >= 1 && (
+                <S.SimpleSelect
+                  defaultValue={''}
+                  id="city"
+                  data-testid="city"
+                  placeholder="Selecione sua cidade"
+                  {...register('city')}
+                  onChange={handleSelectChange}
+                >
+                  <S.Option value="" disabled hidden>
+                    Selecione sua cidade
+                  </S.Option>
+                  {citiesOptions.length &&
+                    citiesOptions.map((option) => (
+                      <S.Option key={option.name} value={option.name}>
+                        {option.name}
+                      </S.Option>
+                    ))}
+                </S.SimpleSelect>
+              )}
 
               {errors.city && (
                 <S.ErrorMessage>{errors.city.message}</S.ErrorMessage>
@@ -320,41 +330,37 @@ export default function Schedule() {
           {errors.pokemons && (
             <S.ErrorMessage>{errors.pokemons.message}</S.ErrorMessage>
           )}
-          {fields.map((field, index) => {
-            return (
-              <S.DoubleInputContainer key={field.id}>
-                <S.PokemonListContainer>
-                  <S.SimpleSpan>{`Pokémon 0${index + 1}`}</S.SimpleSpan>
-                  <S.PokemonListContent>
-                    <S.PokemonSelect
-                      id="pokemons"
-                      placeholder="Selecione seu Pokémon"
-                      {...register(`pokemons.${index}.name`)}
-                      onChange={handleSelectChange}
-                    >
-                      {pokemonsOptions.length &&
-                        pokemonsOptions.map((option) => (
-                          <>
-                            <S.Option value="" disabled hidden>
-                              Selecione seu Pokémon
-                            </S.Option>
-                            <S.Option value={option.name}>
-                              {option.name}
-                            </S.Option>
-                          </>
-                        ))}
-                    </S.PokemonSelect>
+          {fields.map((field, index) => (
+            <S.DoubleInputContainer key={field.id}>
+              <S.PokemonListContainer>
+                <S.SimpleSpan>{`Pokémon 0${index + 1}`}</S.SimpleSpan>
+                <S.PokemonListContent>
+                  <S.PokemonSelect
+                    id="pokemons"
+                    placeholder="Selecione seu Pokémon"
+                    {...register(`pokemons.${index}.name`)}
+                    onChange={handleSelectChange}
+                  >
+                    {pokemonsOptions.length &&
+                      pokemonsOptions.map((option) => (
+                        <div key={option.name}>
+                          <S.Option value="" disabled hidden>
+                            Selecione seu Pokémon
+                          </S.Option>
+                          <S.Option value={option.name}>{option.name}</S.Option>
+                        </div>
+                      ))}
+                  </S.PokemonSelect>
 
-                    {errors.pokemons?.[index]?.name && (
-                      <S.ErrorMessage>
-                        {errors.pokemons?.[index]?.name?.message}
-                      </S.ErrorMessage>
-                    )}
-                  </S.PokemonListContent>
-                </S.PokemonListContainer>
-              </S.DoubleInputContainer>
-            )
-          })}
+                  {errors.pokemons?.[index]?.name && (
+                    <S.ErrorMessage>
+                      {errors.pokemons?.[index]?.name?.message}
+                    </S.ErrorMessage>
+                  )}
+                </S.PokemonListContent>
+              </S.PokemonListContainer>
+            </S.DoubleInputContainer>
+          ))}
 
           <S.PokemonAddButton type="button" onClick={addNewPokemon}>
             Adicionar novo pokémon ao time... +
