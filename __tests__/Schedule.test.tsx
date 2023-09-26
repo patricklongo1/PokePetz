@@ -15,6 +15,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import dates from './mocks/dates.json'
+import times from './mocks/times.json'
 import pokemons from './mocks/pokemons.json'
 import regions from './mocks/regions.json'
 import cities from './mocks/cities.json'
@@ -26,6 +27,20 @@ describe('Schedule', () => {
       'http://localhost:3000/api/scheduling/date',
       async (req, res, ctx) => {
         return res(ctx.json(dates))
+      },
+    ),
+
+    rest.post(
+      'http://localhost:3000/api/scheduling/time',
+      async (req, res, ctx) => {
+        return res(ctx.json(times))
+      },
+    ),
+
+    rest.post(
+      'http://localhost:3000/api/scheduling/create',
+      async (req, res, ctx) => {
+        return res(ctx.json(`Error or Success message`))
       },
     ),
 
@@ -48,6 +63,9 @@ describe('Schedule', () => {
 
   beforeAll(() => {
     worker.listen()
+  })
+
+  beforeEach(() => {
     render(<Schedule />)
   })
 
@@ -81,20 +99,21 @@ describe('Schedule', () => {
       target: { value: 'bulbasaur' },
     })
 
-    // Trigger the date change
-    fireEvent.change(screen.getByPlaceholderText('Selecione uma data'), {
-      target: { value: '30/09/2023' },
-    })
-    // Wait for 1 second before proceeding (not recommended)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    // Now, you can change the time after the delay
-    fireEvent.change(screen.getByPlaceholderText('Selecione um horário'), {
-      target: { value: '10:00:00' },
-    })
+    const selectDateElement = (await screen.findByTestId(
+      'date',
+    )) as HTMLSelectElement
+    const today = new Date().toLocaleDateString()
+    console.log({ today })
+    await userEvent.selectOptions(selectDateElement, today)
+
+    const selectTimeElement = (await screen.findByTestId(
+      'time',
+    )) as HTMLSelectElement
+    await userEvent.selectOptions(selectTimeElement, '10:00:00')
 
     fireEvent.click(screen.getByText('Concluir Agendamento'))
     await waitFor(() => {
-      expect(screen.getByText('Consulta Agendada')).toBeInTheDocument()
+      expect(screen.getByText('Error or Success message')).toBeInTheDocument()
     })
   })
 })

@@ -341,14 +341,16 @@ export default function Schedule() {
                     {...register(`pokemons.${index}.name`)}
                     onChange={handleSelectChange}
                   >
+                    <S.Option value="" disabled hidden>
+                      Selecione seu Pokémon
+                    </S.Option>
                     {pokemonsOptions.length &&
                       pokemonsOptions.map((option) => (
-                        <div key={option.name}>
-                          <S.Option value="" disabled hidden>
-                            Selecione seu Pokémon
+                        <>
+                          <S.Option key={option.name} value={option.name}>
+                            {option.name}
                           </S.Option>
-                          <S.Option value={option.name}>{option.name}</S.Option>
-                        </div>
+                        </>
                       ))}
                   </S.PokemonSelect>
 
@@ -369,25 +371,28 @@ export default function Schedule() {
           <S.DoubleInputContainer>
             <S.InputContainer>
               <S.InputLabel htmlFor="date">Data para Atendimento</S.InputLabel>
-              <S.SimpleSelect
-                defaultValue={''}
-                id="date"
-                placeholder="Selecione uma data"
-                {...register('date')}
-                onChange={(e) => {
-                  handleSelectChange(e)
-                  setSelectedDate(e.target.value)
-                }}
-              >
-                <S.Option value="" disabled hidden>
-                  Selecione uma data
-                </S.Option>
-                {datesOptions.map((option) => (
-                  <S.Option key={option} value={option}>
-                    {option}
+              {datesOptions.length >= 1 && (
+                <S.SimpleSelect
+                  defaultValue={''}
+                  id="date"
+                  data-testid="date"
+                  placeholder="Selecione uma data"
+                  {...register('date')}
+                  onChange={(e) => {
+                    handleSelectChange(e)
+                    setSelectedDate(e.target.value)
+                  }}
+                >
+                  <S.Option value="" disabled hidden>
+                    Selecione uma data
                   </S.Option>
-                ))}
-              </S.SimpleSelect>
+                  {datesOptions.map((option) => (
+                    <S.Option key={option} value={option}>
+                      {option}
+                    </S.Option>
+                  ))}
+                </S.SimpleSelect>
+              )}
               {errors.date && (
                 <S.ErrorMessage>{errors.date.message}</S.ErrorMessage>
               )}
@@ -395,22 +400,25 @@ export default function Schedule() {
 
             <S.InputContainer>
               <S.InputLabel htmlFor="time">Horário de Atendimento</S.InputLabel>
-              <S.SimpleSelect
-                defaultValue={''}
-                id="time"
-                placeholder="Selecione um horário"
-                {...register('time')}
-                onChange={handleSelectChange}
-              >
-                <S.Option value="" disabled hidden>
-                  Selecione um horário
-                </S.Option>
-                {timesOptions.map((option) => (
-                  <S.Option key={option} value={option}>
-                    {option}
+              {timesOptions.length >= 1 && (
+                <S.SimpleSelect
+                  defaultValue={''}
+                  id="time"
+                  data-testid="time"
+                  placeholder="Selecione um horário"
+                  {...register('time')}
+                  onChange={handleSelectChange}
+                >
+                  <S.Option value="" disabled hidden>
+                    Selecione um horário
                   </S.Option>
-                ))}
-              </S.SimpleSelect>
+                  {timesOptions.map((option) => (
+                    <S.Option key={option} value={option}>
+                      {option}
+                    </S.Option>
+                  ))}
+                </S.SimpleSelect>
+              )}
 
               {errors.time && (
                 <S.ErrorMessage>{errors.time.message}</S.ErrorMessage>

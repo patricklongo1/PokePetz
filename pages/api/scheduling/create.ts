@@ -21,7 +21,7 @@ export default function handler(
 
   if (randomBool) {
     res
-      .status(201)
+      .status(200)
       .json(
         `Seu agendamento para dia ${req.body.data.date}, às ${req.body.data.time}, para ${req.body.data.pokemons.length} pokémons foi realizado com sucesso!`,
       )
