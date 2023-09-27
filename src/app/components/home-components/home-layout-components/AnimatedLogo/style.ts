@@ -1,7 +1,12 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 
-export const Container = styled(Link)<{ isExpanded: boolean }>`
+interface ContainerProps {
+  isExpanded: boolean
+  href: string
+}
+
+export const Container = styled(Link)<ContainerProps>`
   text-decoration: none;
   width: ${(props) => (props.isExpanded ? '14.375rem' : '2.3125rem')};
   overflow: hidden;
@@ -28,7 +33,10 @@ export const NameContainer = styled.div`
   overflow: hidden;
 `
 
-export const Name = styled.h1`
+interface NameProps {
+  children: string
+}
+export const Name = styled.h1<NameProps>`
   min-width: 100%;
   color: white;
   font-size: 1.25rem;

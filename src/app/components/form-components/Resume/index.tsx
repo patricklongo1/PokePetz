@@ -1,7 +1,7 @@
 'use client'
 import * as S from './style'
 
-interface InfoBarProps {
+interface ResumeProps {
   teamTotal: number
   tax: number
 }
@@ -16,7 +16,7 @@ function formatCurrency(value: number) {
   return formattedValue
 }
 
-const Resume: React.FC<InfoBarProps> = ({ teamTotal, tax }) => {
+const Resume: React.FC<ResumeProps> = ({ teamTotal, tax }) => {
   return (
     <S.Content>
       <S.LineBox>

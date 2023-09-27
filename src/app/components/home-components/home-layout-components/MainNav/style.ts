@@ -14,15 +14,39 @@ export const Container = styled.nav`
   }
 `
 
-export const SilpleButton = styled(Link)`
+interface SimpleButtonProps {
+  /**
+   * The path of triggered route
+   */
+  href: string
+}
+
+/**
+ * A simple button component that navigates to the specified route.
+ */
+export const SimpleButton = styled(Link)<SimpleButtonProps>`
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 400;
   font-family: var(--font-inter);
   color: #444;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
-export const FilledButton = styled(Link)`
+interface FilledButtonProps {
+  /**
+   * The path of triggered route
+   */
+  href: string
+}
+
+/**
+ * A simple button component that navigates to the specified route.
+ */
+export const FilledButton = styled(Link)<FilledButtonProps>`
   text-decoration: none;
   width: 10.75rem;
   height: 2.625rem;
@@ -40,6 +64,6 @@ export const FilledButton = styled(Link)`
 
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #c20808; /* Altere a cor desejada no hover */
+    background-color: #c20808;
   }
 `
