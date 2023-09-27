@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import StyledComponentsRegistry from './lib/registry'
 import GlobalStyles from './styles/GlobalStyles'
+import QueryProvider from './lib/queryProvider'
 import { Inter_Tight as Inter } from 'next/font/google'
 import Header from './components/home-components/home-layout-components/Header'
 import AnimatedDiv from './components/home-components/home-layout-components/AnimatedLogo'
@@ -20,20 +21,22 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <StyledComponentsRegistry>
-        <GlobalStyles />
-        <body className={`${inter.variable}`}>
-          <div>
+      <QueryProvider>
+        <StyledComponentsRegistry>
+          <GlobalStyles />
+          <body className={`${inter.variable}`}>
             <div>
-              <Header>
-                <AnimatedDiv />
-                <MainNav />
-              </Header>
+              <div>
+                <Header>
+                  <AnimatedDiv />
+                  <MainNav />
+                </Header>
+              </div>
+              {children}
             </div>
-            {children}
-          </div>
-        </body>
-      </StyledComponentsRegistry>
+          </body>
+        </StyledComponentsRegistry>
+      </QueryProvider>
     </html>
   )
 }

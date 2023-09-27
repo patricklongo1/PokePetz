@@ -2,9 +2,11 @@
 import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Schedule from './page'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
+
+import QueryProvider from '../lib/queryProvider'
+import Schedule from './page'
 
 import dates from '../../../mocks/dates.json'
 import times from '../../../mocks/times.json'
@@ -58,7 +60,11 @@ describe('Schedule', () => {
   })
 
   beforeEach(() => {
-    render(<Schedule />)
+    render(
+      <QueryProvider>
+        <Schedule />
+      </QueryProvider>,
+    )
   })
 
   test('should render select with options', async () => {

@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, ChangeEvent, useState } from 'react'
+import { useQuery } from 'react-query'
 import InfoBar from '../components/pages-components/InfoBar'
 import Resume from '../components/form-components/Resume'
 import dynamic from 'next/dynamic'
@@ -138,14 +139,52 @@ const Schedule: React.FC = () => {
     control,
     name: 'pokemons',
   })
-  const [datesOptions, setDatesOptions] = useState([])
   const [selectedDate, setSelectedDate] = useState('')
   const [timesOptions, setTimesOptions] = useState([])
-  const [pokemonsOptions, setPokemonsOptions] = useState<PokemonOption[]>([])
-  const [regionsOptions, setRegionsOptions] = useState<RegionOption[]>([])
-  const [citiesOptions, setCitiesOptions] = useState<CityOption[]>([])
   const [scheduleResponseStatus, setScheduleResponseStatus] = useState(0)
   const [scheduleResponseMessage, setScheduleResponseMessage] = useState('')
+
+  const { data: datesOptions = [] } = useQuery<string[]>(
+    'schedulingDate',
+    async () => {
+      const response = await api.get('/scheduling/date')
+      return response.data
+    },
+  )
+
+  const { data: pokemonsOptions = [] } = useQuery<PokemonOption[]>(
+    'pokemonList',
+    async () => {
+      const response = await pokeApi.get('/pokemon?limit=100000&offset=0')
+      return response.data.results
+    },
+    {
+      staleTime: 1000 * 60 * 60 * 24, // 1 dia
+    },
+  )
+
+  const { data: regionsOptions = [] } = useQuery<RegionOption[]>(
+    'regionList',
+    async () => {
+      const response = await pokeApi.get('/region')
+      return response.data.results
+    },
+    {
+      staleTime: 1000 * 60 * 60 * 24, // 1 dia
+    },
+  )
+
+  const { data: citiesOptions = [] } = useQuery<CityOption[]>(
+    'locationList',
+    async () => {
+      const response = await pokeApi.get('/location')
+      const cityNamesArray = await fetchDataFromUrls(response.data.results)
+      return cityNamesArray
+    },
+    {
+      staleTime: 1000 * 60 * 60 * 24, // 1 dia
+    },
+  )
 
   async function fetchDataFromUrls(locations: CityOption[]) {
     const results = []
@@ -161,31 +200,6 @@ const Schedule: React.FC = () => {
 
     return results
   }
-
-  useEffect(() => {
-    async function loadData() {
-      try {
-        const [dateArray, pokemonArray, regionArray, cityArray] =
-          await Promise.all([
-            api.get('/scheduling/date'),
-            pokeApi.get('/pokemon?limit=100000&offset=0'),
-            pokeApi.get('/region'),
-            pokeApi.get('/location'),
-          ])
-
-        const cityNamesArray = await fetchDataFromUrls(cityArray.data.results)
-
-        setDatesOptions(dateArray.data)
-        setPokemonsOptions(pokemonArray.data.results)
-        setRegionsOptions(regionArray.data.results)
-        setCitiesOptions(cityNamesArray)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    loadData()
-  }, [])
 
   useEffect(() => {
     async function loadTimesOptions() {
