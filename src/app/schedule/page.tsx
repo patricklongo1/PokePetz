@@ -187,18 +187,19 @@ const Schedule: React.FC = () => {
   )
 
   async function fetchDataFromUrls(locations: CityOption[]) {
-    const results = []
-
-    for (const location of locations) {
-      try {
+    try {
+      const promises = locations.map(async (location) => {
         const response = await axios.get(location.url)
-        results.push(response.data.names[1])
-      } catch (error) {
-        console.error(`Erro na requisição para ${location.url}: ${error}`)
-      }
-    }
+        return response.data.names[1]
+      })
 
-    return results
+      const results = await Promise.all(promises)
+
+      return results
+    } catch (error) {
+      console.error(`Erro nas requisições: ${error}`)
+      return []
+    }
   }
 
   useEffect(() => {
