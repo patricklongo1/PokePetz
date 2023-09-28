@@ -10,7 +10,8 @@
     "lint:fix": "next lint --fix",
     "test": "jest --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "cypress-ui": "cypress open"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
@@ -42,6 +43,7 @@
     "@types/node": "^20.6.3",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "cypress": "^13.3.0",
     "eslint": "^8.40.0",
     "eslint-plugin-jest-dom": "^5.0.2",
     "eslint-plugin-storybook": "^0.6.14",
