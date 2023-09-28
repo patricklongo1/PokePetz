@@ -44,10 +44,10 @@ const AboutUs: React.FC = () => {
           <>
             <S.Title>{data!.title}</S.Title>
             {data!.topics.map((topic) => (
-              <>
-                <S.SubTitle key={topic.title}>{topic.title}</S.SubTitle>
+              <div key={topic.title}>
+                <S.SubTitle>{topic.title}</S.SubTitle>
                 <S.Text>{topic.content}</S.Text>
-              </>
+              </div>
             ))}
           </>
         )}

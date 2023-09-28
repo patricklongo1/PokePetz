@@ -1,12 +1,8 @@
 'use client'
 import * as S from './style'
-import { ReactNode } from 'react'
+import { ComponentChildProp } from '../../../../utils/ComponentChildProp'
 
-interface HeaderProps {
-  children: ReactNode
-}
-
-const Header: React.FC<HeaderProps> = ({ children }) => {
+const Header: React.FC<ComponentChildProp> = ({ children }) => {
   return <S.Container data-testid="header-container">{children}</S.Container>
 }
 

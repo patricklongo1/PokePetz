@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import { ComponentChildProp } from './utils/ComponentChildProp'
 
 export const BackgroundImage = styled.div`
   position: relative;
@@ -25,7 +26,7 @@ export const StyledImage = styled(Image)`
   height: 100%;
 `
 
-export const MainText = styled.p`
+export const MainText = styled.p<ComponentChildProp>`
   width: 31.25rem;
   font-size: 2rem;
   font-weight: 700;

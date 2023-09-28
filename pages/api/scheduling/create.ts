@@ -17,11 +17,11 @@ export default function handler(
   ) {
     return res.status(400).end()
   }
-  const randomBool = Math.random() < 0.5
+  const randomBool = Math.random() < 0.8
 
   if (randomBool) {
     res
-      .status(200)
+      .status(201)
       .json(
         `Seu agendamento para dia ${req.body.data.date}, às ${req.body.data.time}, para ${req.body.data.pokemons.length} pokémons foi realizado com sucesso!`,
       )

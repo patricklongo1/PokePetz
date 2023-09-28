@@ -1,4 +1,3 @@
-import { ReactNode } from 'react'
 import StyledComponentsRegistry from './lib/registry'
 import GlobalStyles from './styles/GlobalStyles'
 import QueryProvider from './lib/queryProvider'
@@ -6,6 +5,7 @@ import { Inter_Tight as Inter } from 'next/font/google'
 import Header from './components/home-components/home-layout-components/Header'
 import AnimatedLogo from './components/home-components/home-layout-components/AnimatedLogo'
 import MainNav from './components/home-components/home-layout-components/MainNav'
+import { ComponentChildProp } from './utils/ComponentChildProp'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,7 +18,7 @@ export const metadata = {
   description: 'Teste Frontend React / Next - Petz',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: ComponentChildProp) {
   return (
     <html lang="en">
       <QueryProvider>

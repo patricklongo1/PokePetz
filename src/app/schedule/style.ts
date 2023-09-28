@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { ComponentChildProp } from '../utils/ComponentChildProp'
 
 export const Content = styled.main`
   margin: 0rem auto;
@@ -8,7 +9,7 @@ export const Content = styled.main`
   align-items: center;
 `
 
-export const Title = styled.h1`
+export const Title = styled.h1<ComponentChildProp>`
   font-weight: 600;
   font-size: 1.6rem;
   color: #444;
@@ -60,11 +61,12 @@ export const PokemonListContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  /*   align-items: center;
-  justify-content: space-between; */
 `
 
-export const PokemonSelect = styled.select`
+interface PokemonSelectProps {
+  placeholder: string
+}
+export const PokemonSelect = styled.select<PokemonSelectProps>`
   width: 100%;
   align-self: flex-end;
   border: 0.0625rem solid #d5d5d5;
@@ -121,8 +123,10 @@ export const InputLabel = styled.label`
   color: #444;
   margin-bottom: 0.5rem;
 `
-
-export const SimpleInput = styled.input`
+interface SimpleInputProps {
+  placeholder: string
+}
+export const SimpleInput = styled.input<SimpleInputProps>`
   width: 85%;
   border: 0.0625rem solid #d5d5d5;
   border-radius: 0.5rem;
@@ -130,7 +134,10 @@ export const SimpleInput = styled.input`
   height: 1.5625rem;
 `
 
-export const SimpleSelect = styled.select`
+interface SimpleSelectProps {
+  placeholder: string
+}
+export const SimpleSelect = styled.select<SimpleSelectProps>`
   width: 94%;
   border: 0.0625rem solid #d5d5d5;
   border-radius: 0.5rem;
@@ -175,8 +182,11 @@ export const SimpleSmall = styled.small`
   font-size: 0.75rem;
   color: #747474;
 `
-
-export const SubmitButton = styled.button`
+interface SubmitButtonProps {
+  children: string
+  disabled: boolean
+}
+export const SubmitButton = styled.button<SubmitButtonProps>`
   width: 11.4375rem;
   height: 2.625rem;
   font-weight: 700;

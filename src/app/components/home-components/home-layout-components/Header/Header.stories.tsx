@@ -2,7 +2,7 @@
 
 import { Meta, StoryFn } from '@storybook/react'
 import Header from './index'
-import { ReactNode } from 'react'
+import { ComponentChildProp } from '../../../../utils/ComponentChildProp'
 import AnimatedLogo from '../AnimatedLogo/index'
 import MainNav from '../MainNav/index'
 
@@ -15,10 +15,6 @@ export default {
   tags: ['autodocs'],
 } as Meta
 
-interface HeaderProps {
-  children: ReactNode
-}
-
 const children = (
   <>
     <AnimatedLogo />
@@ -26,7 +22,7 @@ const children = (
   </>
 )
 
-const Template: StoryFn<HeaderProps> = (args) => <Header {...args} />
+const Template: StoryFn<ComponentChildProp> = (args) => <Header {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
